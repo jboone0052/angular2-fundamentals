@@ -9,7 +9,9 @@ import {EventsListComponent,
     CreateEventComponent,
     EventService, 
     EventRouteActivatorService, 
-    EventListResolverService
+    EventListResolverService,
+    CreateSessionComponent,
+    SessionListComponent
   } from './events/index';
 
 import { EventsAppComponent }   from './events-app.component';
@@ -25,10 +27,29 @@ import { AuthService } from './user/auth.service';
 import {appRoutes} from './app.routes';
 
 @NgModule({
-    imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule],
+    imports: [
+        BrowserModule,
+        FormsModule, 
+        ReactiveFormsModule,
+        RouterModule.forRoot(appRoutes)],
     exports: [],
-    declarations: [EventsAppComponent, EventsListComponent, EventThumbnailComponent, NavbarComponent, EventDetailsComponent, CreateEventComponent, Error404Component],
-    providers: [EventService, ToastrService, EventRouteActivatorService, {provide: 'canDecativateCreateEvent', useValue: checkDirtyState }, EventListResolverService, AuthService],
+    declarations: [
+        EventsAppComponent, 
+        EventsListComponent, 
+        EventThumbnailComponent, 
+        NavbarComponent, 
+        EventDetailsComponent, 
+        CreateEventComponent, 
+        Error404Component, 
+        CreateSessionComponent, 
+        SessionListComponent],
+    providers: [
+        EventService, 
+        ToastrService, 
+        EventRouteActivatorService, 
+        EventListResolverService, 
+        AuthService,
+        {provide: 'canDecativateCreateEvent', useValue: checkDirtyState }],
     bootstrap:[EventsAppComponent]
 })
 export class AppModule { }
