@@ -20,10 +20,10 @@ import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 
 import { ToastrService } from './shared/toastr.service';
-
+import { CollapsibleWellComponent } from './shared/collapsible-well.component';
 import { AuthService } from './user/auth.service';
 
-
+import { DurationPipe } from './shared/duration.pipe';
 import {appRoutes} from './app.routes';
 
 @NgModule({
@@ -42,7 +42,9 @@ import {appRoutes} from './app.routes';
         CreateEventComponent, 
         Error404Component, 
         CreateSessionComponent, 
-        SessionListComponent],
+        SessionListComponent,
+        CollapsibleWellComponent,
+        DurationPipe],
     providers: [
         EventService, 
         ToastrService, 
