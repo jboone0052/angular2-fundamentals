@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../user/auth.service';
+import { ISession, EventService } from '../events/shared/index';
 
 @Component({
     moduleId: module.id,
@@ -8,7 +9,17 @@ import { AuthService } from '../user/auth.service';
     styleUrls: ['navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-    constructor(private _auth: AuthService) { }
+
+    searchTerm: string = "";
+    foundSessions: ISession[];
+
+    constructor(private _auth: AuthService, private _eventService: EventService) { }
 
     ngOnInit() { }
+
+    searchSessions(searchTerm: string) {
+        this._eventService.searchSessions(searchTerm).subscribe((sessions) => {
+            this.foundSessions = sessions;
+        })
+    }
 }
