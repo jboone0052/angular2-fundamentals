@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './user/auth.service';
 
 @Component({
     moduleId: module.id,
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'events-app.component.html'
 })
 export class EventsAppComponent implements OnInit {
-    constructor() { }
+    constructor(private auth: AuthService) { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.auth.checkAuthenticationStatus();
+    }
 }
